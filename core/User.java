@@ -43,31 +43,39 @@ public class User {
     }
 
     public void addFollowing(User user) {
-        if (user == null || this.equals(user)) {
+        if (user == null || this.equals(user))
             throw new InvalidOperationException("Invalid following user.");
-        }
-        if (!followingList.contains(user)) {
+
+        if (!followingList.contains(user))
             followingList.add(user);
-        } else {
+        else
             throw new InvalidOperationException("Already following user.");
-        }
     }
 
     public void addFollower(User user) {
-        if (user == null || this.equals(user)) {
+        if (user == null || this.equals(user))
             throw new InvalidOperationException("Invalid follower user.");
-        }
-        if (!followerList.contains(user)) {
+
+        if (!followerList.contains(user))
             followerList.add(user);
-        } else {
+        else
             throw new InvalidOperationException("User already a follower.");
-        }
+    }
+
+    public void addPlaylist(Playlist playlist) {
+        if (playlist == null)
+            throw new IllegalArgumentException("Playlist cannot be null.");
+
+        if (!playlists.contains(playlist))
+            playlists.add(playlist);
+        else
+            throw new InvalidOperationException("Playlist already exists.");
     }
 
     public boolean verifyPassword(String password) {
-        if (password == null) {
+        if (password == null)
             throw new IllegalArgumentException("Password cannot be null.");
-        }
+
         return this.password.equals(password);
     }
 
@@ -76,15 +84,12 @@ public class User {
     }
 
     public final void setUsername(String username) {
-        if (username == null || username.trim().isEmpty()) {
+        if (username == null || username.trim().isEmpty())
             throw new IllegalArgumentException("Username cannot be null or empty.");
-        }
 
-        for (User user : allUsers) {
-            if (user.getUsername().equals(username)) {
+        for (User user : allUsers)
+            if (user.getUsername().equals(username))
                 throw new IllegalArgumentException("Username is already taken.");
-            }
-        }
 
         this.username = username;
     }
@@ -94,9 +99,8 @@ public class User {
     }
 
     public final void setPassword(String password) {
-        if (password == null || password.length() < 8) {
+        if (password == null || password.length() < 8)
             throw new IllegalArgumentException("Password must be at least 8 characters long.");
-        }
 
         this.password = password;
     }
@@ -106,9 +110,8 @@ public class User {
     }
 
     public final void setBehavior(UserBehavior behavior) {
-        if (behavior == null) {
+        if (behavior == null)
             throw new IllegalArgumentException("Behavior cannot be null.");
-        }
 
         this.behavior = behavior;
     }
