@@ -7,7 +7,7 @@ public class Music {
 
     private String title;
     private User singer;
-    private int numberOfStream = 0;
+    private int numberOfStreams = 0;
 
     public Music(String title, User singer) throws IllegalArgumentException {
         setTitle(title);
@@ -18,7 +18,7 @@ public class Music {
 
     public void play() {
         System.out.println("Playing " + title + " by " + singer.getUsername());
-        numberOfStream++;
+        numberOfStreams++;
     }
 
     public ArrayList<Music> search(String title) {
@@ -50,7 +50,7 @@ public class Music {
 
     public final void setTitle(String title) {
         if (title == null || title.trim().isEmpty()) {
-            throw new IllegalArgumentException("Title cannot be null or empty.");
+            throw new IllegalArgumentException("Music title cannot be null or empty.");
         }
 
         this.title = title;
@@ -68,15 +68,15 @@ public class Music {
         this.singer = singer;
     }
 
-    public int getNumberOfStream() {
-        return numberOfStream;
+    public int getNumberOfStreams() {
+        return numberOfStreams;
     }
 
-    public void setNumberOfStream(int numberOfStream) {
-        if (numberOfStream < 0) {
+    public void setNumberOfStreams(int numberOfStreams) {
+        if (numberOfStreams < 0) {
             throw new IllegalArgumentException("Number of streams cannot be negative.");
         }
 
-        this.numberOfStream = numberOfStream;
+        this.numberOfStreams = numberOfStreams;
     }
 }
