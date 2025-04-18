@@ -5,12 +5,12 @@ public class RegularBehavior implements UserBehavior {
 
     @Override
     public void createPlaylist(String title, User owner) {
-        // TODO make new Playlist object and add it to the owner playlists
+        throw new InvalidOperationException("Regular users cannot create playlists.");
     }
 
     @Override
     public void playMusic(Music music) {
-        // TODO play music in Music class
+        music.play();
 
         if (this.playingLimit > 0)
             this.playingLimit--;
@@ -20,7 +20,6 @@ public class RegularBehavior implements UserBehavior {
 
     @Override
     public void buyPremium(User owner, int month) {
-        // TODO promote regular user to premium user
-        // (update the value of behavior field)
+        owner.setBehavior(new PremiumBehavior(month));
     }
 }
