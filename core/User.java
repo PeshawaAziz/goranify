@@ -65,6 +65,9 @@ public class User {
     }
 
     public boolean verifyPassword(String password) {
+        if (password == null) {
+            throw new IllegalArgumentException("Password cannot be null.");
+        }
         return this.password.equals(password);
     }
 
