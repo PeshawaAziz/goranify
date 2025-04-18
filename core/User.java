@@ -104,6 +104,10 @@ public class User {
     }
 
     public final void setBehavior(UserBehavior behavior) {
+        if (behavior == null) {
+            throw new IllegalArgumentException("Behavior cannot be null.");
+        }
+
         this.behavior = behavior;
     }
 }
