@@ -14,18 +14,13 @@ public class User {
 
     private UserBehavior behavior;
 
-    public User(String username, String password) {
-        try {
-            setUsername(username);
-            setPassword(password);
-            followerList = new ArrayList<>();
-            followingList = new ArrayList<>();
-            playlists = new ArrayList<>();
-            setBehavior(new RegularBehavior());
-
-        } catch (InvalidOperationException | IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+    public User(String username, String password) throws InvalidOperationException, IllegalArgumentException {
+        setUsername(username);
+        setPassword(password);
+        followerList = new ArrayList<>();
+        followingList = new ArrayList<>();
+        playlists = new ArrayList<>();
+        setBehavior(new RegularBehavior());
 
         allUsers.add(this);
     }
